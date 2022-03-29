@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(1,'src')
 from detectionlib import inference_engine
 
 def main():
