@@ -53,7 +53,7 @@ class model_trainer():
                                 batch_size=batch_size, 
                                 train_whole_model=True)
         model.evaluate(self.data[2])
-        TFLITE_FILENAME = '{m_name}+_{ep}+_{btc}.tflite'.format(m_name = spec.config.backbone_name, ep= epochs, btc = batch_size)
+        TFLITE_FILENAME = '{m_name}+_{ep}e+_{btc}b.tflite'.format(m_name = spec.config.backbone_name, ep= epochs, btc = batch_size)
         LABELS_FILENAME = 'face-labels.txt'
         model.export(export_dir=dir, tflite_filename=TFLITE_FILENAME, label_filename=LABELS_FILENAME,
         export_format=[ExportFormat.TFLITE, ExportFormat.LABEL])
