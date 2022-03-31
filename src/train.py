@@ -46,8 +46,6 @@ class model_trainer():
         '''
         spec = object_detector.EfficientDetLite0Spec()
         spec.config.max_instances_per_image = 6000 
-        TFLITE_FILENAME = '{m_name}_{ep}e_{btc}b.tflite'.format(m_name = spec.config.backbone_name, ep= epochs, btc = batch_size)
-        print(TFLITE_FILENAME)
         model = object_detector.create(train_data=self.data[0], 
                                 model_spec=spec, 
                                 validation_data=self.data[1], 
@@ -55,8 +53,6 @@ class model_trainer():
                                 batch_size=batch_size, 
                                 train_whole_model=True)
         model.evaluate(self.data[2])
-        
-
         TFLITE_FILENAME = '{m_name}+_{ep}+_{btc}.tflite'.format(m_name = spec.config.backbone_name, ep= epochs, btc = batch_size)
         LABELS_FILENAME = 'face-labels.txt'
         model.export(export_dir=dir, tflite_filename=TFLITE_FILENAME, label_filename=LABELS_FILENAME,
